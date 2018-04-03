@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Smart Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="includes/css/bootstrap.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> -->
+  <style media="screen">
+  #calculator { padding: 10px; background-color: #24B7AB; margin: 10px 0; } #calculator .display { margin-bottom: 20px; text-align: right; } #calculator button { margin-bottom: 10px; background-color: #F78833; color: white; font-weight: bold; }
+  </style>
+</head>
+<body onload="viewData()">
+
+<div class="container-fluid">
+  <div class="row  justify-content-center">
+    <h1>Smart Calculator</h1>
+    <p>StressFree</p>
+  </div>
+
+  <div class="container-fluid">
+    <div id="msg"></div>
+    <!-- Control the column width, and how they should appear on different devices -->
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="row  justify-content-center">
+          <h1>Daily Log</h1>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Price</th>
+              <th>Time</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="data_table">
+            <!-- <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>@mdo</td>
+              <td><button class="btn btn-primary">Edit</button></td>
+              <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>@fat</td>
+              <td><button class="btn btn-primary">Edit</button></td>
+              <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>@twitter</td>
+              <td><button class="btn btn-primary">Edit</button></td>
+              <td><button class="btn btn-danger">Delete</button></td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-center"></div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" style="background-color:orange;">
+        <div class="row  justify-content-center">
+          <h1>Current Log</h1>
+        </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Price</th>
+                <th>Unit</th>
+                <th>Total</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="product_price">
+              <!-- <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td><button class="btn btn-primary">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td><button class="btn btn-primary">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td><button class="btn btn-primary">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+              </tr> -->
+            </tbody>
+            <!-- <tfoot>
+              <tr>
+                <th>Total</th>
+                <th id="">
+
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </tfoot> -->
+          </table>
+          <h4>Grand Total: <strong id="product_total">0</strong> Tk</h4>
+          <h4>Return: <strong id="price_change">0</strong> Tk</h4>
+          <form class="" action="index.html" method="post">
+            <div id="keydiv" tabindex="1" />
+            <div class="row justify-content-center">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="" id="calculator">
+                  <form class="" action="index.html" method="post">
+                    <div class="row">
+                      <div class="col-12">
+                        <input type="hidden" name="" value="" class="form-control display" id="var1">
+                        <input type="hidden" name="" value="" class="form-control display" id="operation">
+                        <input type="text" name="" value="" class="form-control display" id="display">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="multiplication" value="x"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="devision" value="/"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="minus" value="-"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="plus" value="+"/>
+                      </div>
+
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="7" value="7"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="8" value="8"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="9" value="9"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="backspace" value="Del"/> <!-- &#x232B -->
+                      </div>
+
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="4" value="4"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="5" value="5"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="6" value="6"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="plus_minus" value="+/-"/>
+                      </div>
+
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="1" value="1"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="2" value="2"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="3" value="3"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="cancel" value="C"/>
+                      </div>
+
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="0" value="0"/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="dot" value="."/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="equal" value="="/>
+                      </div>
+                      <div class="col-3">
+                        <input type="button" name="button" class="btn btn-default btn-block" id="clear" value="AC"/>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script> -->
+<script src="includes/js/jquery.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script> -->
+<script src="includes/js/bootstrap.js">
+
+</script>
+<script src="includes/js/js.js"></script>
+</body>
+</html>
